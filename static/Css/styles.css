@@ -1,0 +1,84 @@
+/* Gradientes para las tarjetas */
+.bg-gradient-purple {
+    background: linear-gradient(45deg, #6f42c1, #6610f2);
+}
+
+.bg-gradient-blue {
+    background: linear-gradient(45deg, #0d6efd, #0dcaf0);
+}
+
+.bg-gradient-green {
+    background: linear-gradient(45deg, #198754, #20c997);
+}
+
+/* Estilos generales */
+.card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+
+/* Estilos para los números en las tarjetas */
+.card h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Estilos para los íconos */
+.fas {
+    font-size: 1.2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Animación para el ícono de actualización */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.fa-sync-alt {
+    animation: spin 2s linear infinite;
+}
+
+/* Estilos para el contenedor principal */
+.container-fluid {
+    max-width: 1400px;
+}
+
+/* Estilos para los gráficos */
+canvas {
+    max-width: 100%;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotating-icon {
+    display: inline-block;
+    animation: rotating 2s linear infinite;
+    color: #0d6efd;
+}
