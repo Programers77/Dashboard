@@ -12,6 +12,28 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+    <!-- Botón del menú -->
+    <div class="menu-button">
+        <button class="btn btn-link text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideMenu" aria-controls="sideMenu">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+    </div>
+
+    <!-- Menú lateral (Offcanvas) -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sideMenu" aria-labelledby="sideMenuLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sideMenuLabel">Menú</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">
+                    <i class="fas fa-store me-2"></i>Tiendas
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid py-4">
         <div class="row mb-4">
             <div class="col-12 d-flex justify-content-between align-items-center">
@@ -68,10 +90,6 @@
         </div>
 
         <div class="row g-4">
-            <!-- Gráfico de ventas por categoría -->
-            
-
-        <div class="row g-4">
             <div class="col-lg-6">
                 <div class="card shadow-sm">
                     <div class="card-header bg-white">
@@ -94,30 +112,29 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-lg-12">
-        <div class="card shadow-sm">
-            <div class="card-header bg-white">
-                <h5 class="card-title mb-0">Resumen Mensual por Tienda</h5>
-            </div>
-            <div class="card-body">
-                <canvas id="storesMonthlyChart"></canvas>
+        <div class="col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <h5 class="card-title mb-0">Resumen Mensual por Tienda</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="storesMonthlyChart"></canvas>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="col-lg-6">
-    <div class="card shadow-sm">
-        <div class="card-header bg-white">
-            <h5 class="card-title mb-0">Ventas por Categoría</h5>
-        </div>
-        <div class="card-body">
-            <canvas id="categoryChart"></canvas>
+        <div class="col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <h5 class="card-title mb-0">Ventas por Categoría</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
