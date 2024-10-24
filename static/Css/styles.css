@@ -130,6 +130,17 @@ canvas {
     transform: translateX(5px);
 }
 
+/* Estilos adicionales para el menú */
+.list-group-item i {
+    width: 20px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.list-group-item:hover i {
+    color: #0d6efd;
+}
+
 /* Responsive adjustments para el menú */
 @media (max-width: 768px) {
     .container-fluid {
@@ -140,4 +151,87 @@ canvas {
         top: 10px;
         left: 10px;
     }
+}
+
+/* Estilos para las tarjetas de tiendas */
+.store-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.store-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+}
+
+.metric-label {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+}
+
+.metric-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #212529;
+}
+
+.performance-badge {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.performance-badge.positive {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.performance-badge.negative {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+/* Estilos para el buscador y filtros */
+.input-group-text {
+    background-color: white;
+    border-right: none;
+}
+
+#searchTienda {
+    border-left: none;
+}
+
+#searchTienda:focus {
+    box-shadow: none;
+    border-color: #ced4da;
+}
+
+/* Animación para la carga de tarjetas */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.store-card {
+    animation: fadeIn 0.3s ease-out forwards;
 }

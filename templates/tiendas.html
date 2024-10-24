@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiendas - Dashboard de Ventas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Botón del menú -->
+    <div class="menu-button">
+        <button class="btn btn-link text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideMenu" aria-controls="sideMenu">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+    </div>
+
+    <!-- Menú lateral (Offcanvas) -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sideMenu" aria-labelledby="sideMenuLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sideMenuLabel">Menú</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="list-group">
+                <a href="/tiendas" class="list-group-item list-group-item-action active">
+                    <i class="fas fa-store me-2"></i>Tiendas
+                </a>
+                <a href="/volumen" class="list-group-item list-group-item-action">
+                    <i class="fas fa-chart-line me-2"></i>Volumen de Ventas
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid py-4">
+        <div class="row mb-4">
+            <div class="col-12 d-flex justify-content-between align-items-center">
+                <h1 class="display-5 fw-bold text-primary">Rendimiento de Tiendas</h1>
+                <div class="bg-white p-2 rounded shadow-sm d-flex align-items-center">
+                    <i class="fas fa-sync-alt me-2 rotating-icon"></i>
+                    <span class="text-muted">Última actualización: <span id="lastUpdate">10:30 AM</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                    <input type="text" class="form-control" id="searchTienda" placeholder="Buscar tienda...">
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                                <button class="btn btn-outline-primary me-2">
+                                    <i class="fas fa-filter me-2"></i>Filtrar
+                                </button>
+                                <button class="btn btn-outline-success">
+                                    <i class="fas fa-download me-2"></i>Exportar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4" id="tiendasGrid">
+            <!-- Las tarjetas de tiendas se generarán dinámicamente -->
+        </div>
+    </div>
+
+    <!-- Template para las tarjetas de tiendas -->
+    <template id="tiendaTemplate">
+        <div class="col-md-6 col-lg-4">
+            <div class="card store-card h-100">
+                <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0 store-name"></h5>
+                    <span class="badge performance-badge"></span>
+                </div>
+                <div class="card-body">
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <span class="metric-label">Ventas Mes Actual</span>
+                            <span class="metric-value current-sales"></span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Ventas Mes Anterior</span>
+                            <span class="metric-value previous-sales"></span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Margen de Ganancia</span>
+                            <span class="metric-value margin"></span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Variación Mensual</span>
+                            <span class="metric-value variation"></span>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <canvas class="store-chart"></canvas>
+                    </div>
+                </div>
+                <div class="card-footer bg-white">
+                    <button class="btn btn-link text-primary p-0">
+                        <i class="fas fa-chart-bar me-1"></i>Ver detalles
+                    </button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/tiendas.js') }}"></script>
+</body>
+</html>

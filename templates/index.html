@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+    
+   
     <!-- Botón del menú -->
     <div class="menu-button">
         <button class="btn btn-link text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideMenu" aria-controls="sideMenu">
@@ -20,20 +22,29 @@
     </div>
 
     <!-- Menú lateral (Offcanvas) -->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="sideMenu" aria-labelledby="sideMenuLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="sideMenuLabel">Menú</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">
-                    <i class="fas fa-store me-2"></i>Tiendas
-                </a>
-            </div>
+    <!-- Menú lateral (Offcanvas) -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="sideMenu" aria-labelledby="sideMenuLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="sideMenuLabel">Menú</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="list-group">
+            <!-- Cambia el href a tiendas.html -->
+            <a href="/tiendas" class="list-group-item list-group-item-action">
+                <i class="fas fa-store me-2"></i>Tiendas
+            </a>
+            
+            
+            <a href="#" class="list-group-item list-group-item-action">
+                <i class="fas fa-chart-line me-2"></i>Volumen de Ventas
+            </a>
         </div>
     </div>
+</div>
 
+
+    <!-- El resto del contenido sigue igual... -->
     <div class="container-fluid py-4">
         <div class="row mb-4">
             <div class="col-12 d-flex justify-content-between align-items-center">
