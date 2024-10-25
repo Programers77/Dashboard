@@ -12,14 +12,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <!-- Botón del menú -->
-    <div class="menu-button">
-        <button class="btn btn-link text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideMenu" aria-controls="sideMenu">
-            <i class="fas fa-bars fa-lg"></i>
-        </button>
-    </div>
-
-    <!-- Menú lateral (Offcanvas) -->
+    <nav class="navbar navbar-dark bg-primary">
+        <!-- Botón del menú -->
+        <div class="menu-button">
+            <button class="btn btn-link text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideMenu" aria-controls="sideMenu">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+        </div>
+    
+        <!-- Menú lateral (Offcanvas) -->
+        <!-- Menú lateral (Offcanvas) -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="sideMenu" aria-labelledby="sideMenuLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="sideMenuLabel">Menú</h5>
@@ -27,15 +29,31 @@
         </div>
         <div class="offcanvas-body">
             <div class="list-group">
-                <a href="/tiendas" class="list-group-item list-group-item-action active">
+                <!-- Cambia el href a tiendas.html -->
+                <a href="/tiendas" class="list-group-item list-group-item-action">
                     <i class="fas fa-store me-2"></i>Tiendas
                 </a>
-                <a href="/volumen" class="list-group-item list-group-item-action">
+                <br>
+                <a href="#" class="list-group-item list-group-item-action">
                     <i class="fas fa-chart-line me-2"></i>Volumen de Ventas
                 </a>
+                <br>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <i class="fas fa-chart-line me-2"></i>Articulos mas Vendidos
+                </a>
+                <br>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <i class="fas fa-chart-line me-2"></i>Ventas Diarias
+                </a>
+                <br>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <i class="fas fa-chart-line me-2"></i>Seguimientos de Objetivos de Ventas
+                </a>
+    
             </div>
         </div>
     </div>
+    </nav>
 
     <div class="container-fluid py-4">
         <div class="row mb-4">
