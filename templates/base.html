@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard de Ventas</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Custom CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-primary">
+      <!-- Contenedor para alinear los botones -->
+      <div class="d-flex align-items-center px-2">
+        <!-- Botón del menú -->
+        <div class="menu-button">
+          <button
+            class="btn btn-link text-light"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#sideMenu"
+            aria-controls="sideMenu"
+          >
+            <i class="fas fa-bars fa-lg"></i>
+          </button>
+        </div>
+        <!-- Botón de Inicio -->
+        <div class="inicio-button me-3">
+          <a href="/" class="btn btn-link text-light">
+            <i class="fas fa-home fa-lg"></i> INICIO
+          </a>
+        </div>
+      </div>
+
+      <!-- Menú lateral (Offcanvas) -->
+      <div
+        class="offcanvas offcanvas-start"
+        tabindex="-1"
+        id="sideMenu"
+        aria-labelledby="sideMenuLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title text-primary" id="sideMenuLabel">Menú</h5>
+          <button
+            type="button"
+            class="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="list-group">
+            <!-- Cambia el href a tiendas.html -->
+            <a href="/tiendas" class="list-group-item list-group-item-action">
+              <i class="fas fa-store me-2"></i>Tiendas
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+              <i class="fas fa-chart-line me-2"></i>Volumen de Ventas
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+              <i class="fa-solid fa-cart-shopping"></i>Artículos más Vendidos
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+              <i class="fa-solid fa-money-check-dollar"></i>Ventas Diarias
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+              <i class="fa-solid fa-square-poll-vertical"></i>Seguimientos de
+              Objetivos de Ventas
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    {%block content%} {%endblock%}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
