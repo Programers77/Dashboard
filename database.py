@@ -43,11 +43,22 @@ def get_dashboard_data():
             "totalSalesBS": total_bs,
             "totalSalesCashea": total_usd * 0.5,  # Ejemplo
             "storesSales": [
-                {"name": "Caracas Centro", "sales": total_usd * 0.3, "color": "#FF6B6B"},
-                {"name": "Maracaibo", "sales": total_usd * 0.25, "color": "#4ECDC4"},
-                {"name": "Valencia", "sales": total_usd * 0.2, "color": "#45B7D1"},
-                {"name": "Barquisimeto", "sales": total_usd * 0.15, "color": "#96CEB4"},
-                {"name": "Maracay", "sales": total_usd * 0.1, "color": "#FFEEAD"}
+                {"name": "Kapitana", "sales": total_usd * 0.3, "color": "#FF6B6B"},
+                {"name": "Valencia", "sales": total_usd * 0.25, "color": "#4ECDC4"},
+                {"name": "Guacara", "sales": total_usd * 0.2, "color": "#45B7D1"},
+                {"name": "Cagua", "sales": total_usd * 0.15, "color": "#96CEB4"},
+                {"name": "Cruz Verde", "sales": total_usd * 0.1, "color": "#FFEEAD"},
+                {"name": "Cabimas", "sales": total_usd * 0.3, "color": "#FF6B6B"},
+                {"name": "Babilon", "sales": total_usd * 0.25, "color": "#4ECDC4"},
+                {"name": "Guanare", "sales": total_usd * 0.2, "color": "#45B7D1"},
+                {"name": "Cabudare", "sales": total_usd * 0.15, "color": "#96CEB4"},
+                {"name": "Valera", "sales": total_usd * 0.1, "color": "#FFEEAD"},{"name": "Caracas Centro", "sales": total_usd * 0.3, "color": "#FF6B6B"},
+                {"name": "Catia", "sales": total_usd * 0.25, "color": "#4ECDC4"},
+                {"name": "Propatria", "sales": total_usd * 0.2, "color": "#45B7D1"},
+                {"name": "Baralt", "sales": total_usd * 0.15, "color": "#96CEB4"},
+                {"name": "Maturin", "sales": total_usd * 0.1, "color": "#FFEEAD"},
+                {"name": "Upata", "sales": total_usd * 0.1, "color": "#FFEEAD"}
+
             ],
             "salesByCategory": [
                 {"category": "Electrónica", "sales": total_usd * 0.3, "color": "#FF6B6B"},
