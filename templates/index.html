@@ -1,174 +1,115 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard de Ventas</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
-    
-    <nav class="navbar navbar-dark bg-primary">
-    <!-- Botón del menú -->
-    <div class="menu-button">
-        <button class="btn btn-link text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideMenu" aria-controls="sideMenu">
-            <i class="fas fa-bars fa-lg"></i>
-        </button>
-    </div>
+{%extends "base.html"%} {%block content%}
 
-    <!-- Menú lateral (Offcanvas) -->
-    <!-- Menú lateral (Offcanvas) -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="sideMenu" aria-labelledby="sideMenuLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="sideMenuLabel">Menú</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<!-- El resto del contenido sigue igual... -->
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+      <h1 class="display-5 fw-bold text-primary">Dashboard de Ventas</h1>
+      <div class="bg-white p-2 rounded shadow-sm d-flex align-items-center">
+        <i class="fas fa-sync-alt me-2 rotating-icon"></i>
+        <span class="text-muted">Actualizando en tiempo real</span>
+      </div>
     </div>
-    <div class="offcanvas-body">
-        <div class="list-group">
-            <!-- Cambia el href a tiendas.html -->
-            <a href="/tiendas" class="list-group-item list-group-item-action">
-                <i class="fas fa-store me-2"></i>Tiendas
-            </a>
-            <br>
-            <a href="#" class="list-group-item list-group-item-action">
-                <i class="fas fa-chart-line me-2"></i>Volumen de Ventas
-            </a>
-            <br>
-            <a href="#" class="list-group-item list-group-item-action">
-                <i class="fas fa-chart-line me-2"></i>Articulos mas Vendidos
-            </a>
-            <br>
-            <a href="#" class="list-group-item list-group-item-action">
-                <i class="fas fa-chart-line me-2"></i>Ventas Diarias
-            </a>
-            <br>
-            <a href="#" class="list-group-item list-group-item-action">
-                <i class="fas fa-chart-line me-2"></i>Seguimientos de Objetivos de Ventas
-            </a>
+  </div>
 
+  <div
+    class="alert alert-info d-flex justify-content-between align-items-center mb-4"
+    role="alert"
+  >
+    <div>Tasa BCV: <span id="dollarBCV"></span> Bs/USD</div>
+    <div>Tasa Paralelo: <span id="dollarParalelo"></span> Bs/USD</div>
+  </div>
+
+  <div class="row g-4 mb-4">
+    <div class="col-md-4">
+      <div class="card bg-gradient-purple text-white h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title">Ventas USD</h5>
+          </div>
+          <h2 class="mt-3" id="totalSalesUSD">$</h2>
         </div>
+      </div>
     </div>
+
+    <div class="col-md-4">
+      <div class="card bg-gradient-blue text-white h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title">Ventas Bs</h5>
+          </div>
+          <h2 class="mt-3" id="totalSalesBS">Bs.</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card bg-gradient-green text-white h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <h5 class="card-title">Ventas Cashea</h5>
+          </div>
+          <h2 class="mt-3" id="totalSalesCashea">$</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-header bg-white">
+          <h5 class="card-title mb-0">Ventas Mensuales</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="monthlyChart" height="300"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-header bg-white">
+          <h5 class="card-title mb-0">Ventas por Tienda</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="storesChart" height="300"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-12">
+    <div class="card shadow-sm">
+      <div class="card-header bg-white">
+        <h5 class="card-title mb-0">Resumen Mensual por Tienda</h5>
+      </div>
+      <div class="card-body">
+        <canvas id="storesMonthlyChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="card shadow-sm">
+      <div class="card-header bg-white">
+        <h5 class="card-title mb-0">Ventas por Categoría</h5>
+      </div>
+      <div class="card-body">
+        <canvas id="categoryChart"></canvas>
+      </div>
+    </div>
+  </div>
 </div>
-</nav>
 
-
-    <!-- El resto del contenido sigue igual... -->
-    <div class="container-fluid py-4">
-        <div class="row mb-4">
-            <div class="col-12 d-flex justify-content-between align-items-center">
-                <h1 class="display-5 fw-bold text-primary">Dashboard de Ventas</h1>
-                <div class="bg-white p-2 rounded shadow-sm d-flex align-items-center">
-                    <i class="fas fa-sync-alt me-2 rotating-icon"></i>
-                    <span class="text-muted">Actualizando en tiempo real</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="alert alert-info d-flex justify-content-between align-items-center mb-4" role="alert">
-            <div>
-                Tasa BCV: <span id="dollarBCV"></span> Bs/USD
-            </div>
-            <div>
-                Tasa Paralelo: <span id="dollarParalelo"></span> Bs/USD
-            </div>
-        </div>
-
-        <div class="row g-4 mb-4">
-            <div class="col-md-4">
-                <div class="card bg-gradient-purple text-white h-100">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="card-title">Ventas USD</h5>
-                        </div>
-                        <h2 class="mt-3" id="totalSalesUSD">$</h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card bg-gradient-blue text-white h-100">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="card-title">Ventas Bs</h5>
-                        </div>
-                        <h2 class="mt-3" id="totalSalesBS">Bs.</h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card bg-gradient-green text-white h-100">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="card-title">Ventas Cashea</h5>
-                        </div>
-                        <h2 class="mt-3" id="totalSalesCashea">$</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-lg-6">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-white">
-                        <h5 class="card-title mb-0">Ventas Mensuales</h5>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="monthlyChart" height="300"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-white">
-                        <h5 class="card-title mb-0">Ventas por Tienda</h5>
-                    </div>
-                    <div class="card-body">
-                        <canvas id="storesChart" height="300"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-12">
-            <div class="card shadow-sm">
-                <div class="card-header bg-white">
-                    <h5 class="card-title mb-0">Resumen Mensual por Tienda</h5>
-                </div>
-                <div class="card-body">
-                    <canvas id="storesMonthlyChart"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-6">
-            <div class="card shadow-sm">
-                <div class="card-header bg-white">
-                    <h5 class="card-title mb-0">Ventas por Categoría</h5>
-                </div>
-                <div class="card-body">
-                    <canvas id="categoryChart"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Custom JS -->
-    <script>
-        // Pasar los datos iniciales desde Flask a JavaScript
-        const initialData = {{ initial_data|tojson|safe }};
-    </script>
-    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
-</body>
-</html>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Custom JS -->
+<script>
+  // Pasar los datos iniciales desde Flask a JavaScript
+  const initialData = {{ initial_data|tojson|safe }};
+</script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{%endblock%}
