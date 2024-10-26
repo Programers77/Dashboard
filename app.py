@@ -20,5 +20,9 @@ def get_data():
         return jsonify({"error": "No se pudieron obtener los datos"}), 500
     return jsonify(data)
 
+@app.route('/tiendas')
+def tiendas():
+    return render_template("tiendas.html")
+
 if __name__ == '__main__':
     app.run(debug=True)
