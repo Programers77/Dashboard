@@ -1,64 +1,46 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% block content %}
 
 <div class="container-fluid py-4">
   <div class="row mb-4">
     <div class="col-12 d-flex justify-content-between align-items-center">
       <h1 class="display-5 fw-bold text-primary">Rendimiento de Tiendas</h1>
+      <!-- Menú desplegable de tiendas -->
+      <select id="tiendaSelector" class="form-select w-25">
+        <option value="" disabled selected>Seleccione una tienda</option>
+        <option value="kapitana">Kapitana</option>
+        <option value="valencia">Valencia</option>
+        <option value="guacara">Guacara</option>
+        <option value="cagua">Cagua</option>
+        <option value="cruz_verde">Cruz Verde</option>
+        <option value="cabimas">Cabimas</option>
+        <option value="babilon">Babilon</option>
+        <option value="guanare">Guanare</option>
+        <option value="cabudare">Cabudare</option>
+        <option value="valera">Valera</option>
+        <option value="catia">Catia</option>
+        <option value="propatria">Propatria</option>
+        <option value="baralt">Baralt</option>
+        <option value="maturin">Maturin</option>
+        <option value="upata">Upata</option>
+      </select>
     </div>
   </div>
+  <br>
 
-  <div class="row mb-4">
-    <div class="col-12">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <div class="row align-items-center">
-            <div class="col-md-6">
-              <div class="input-group">
-                <span class="input-group-text"
-                  ><i class="fas fa-search"></i
-                ></span>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="searchTienda"
-                  placeholder="Buscar tienda..."
-                />
-              </div>
-            </div>
-            <div class="col-md-6 text-md-end mt-3 mt-md-0">
-              <button class="btn btn-outline-primary me-2">
-                <i class="fas fa-filter me-2"></i>Filtrar
-              </button>
-              <button class="btn btn-outline-success">
-                <i class="fas fa-download me-2"></i>Exportar
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- Contenedor para los gráficos -->
+  <div id="contenedorGraficos" class="row">
+    <div class="col-md-4">
+      <canvas id="graficoDiario"></canvas>
     </div>
-  </div>
-
-  <div class="row g-4" id="tiendasGrid">
-    {% set tiendas = ["Kapitana", "Valencia", "Guacara", "Cagua", "Cruz Verde",
-    "Cabimas", "Babilon", "Guanare", "Cabudare", "Valera", "Catia", "Propatria",
-    "Baralt", "Maturin", "Upata"] %} {% for tienda in tiendas %}
-    <div class="col-md-4 col-lg-3">
-      <div
-        class="card text-center shadow-sm"
-        style="
-          background: linear-gradient(135deg, #007bff, #ff4b5c);
-          color: white;
-        "
-      >
-        <div class="card-body">
-          <i class="fas fa-store fa-2x mb-3"></i>
-          <h5 class="card-title">{{ tienda }}</h5>
-        </div>
-      </div>
+    <div class="col-md-4">
+      <canvas id="graficoSemanal"></canvas>
     </div>
-    {% endfor %}
+    <div class="col-md-4">
+      <canvas id="graficoMensual"></canvas>
+    </div>
   </div>
 </div>
+
 
 {% endblock %}
